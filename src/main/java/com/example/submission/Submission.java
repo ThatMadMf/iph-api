@@ -1,22 +1,20 @@
 package com.example.submission;
 
-import java.util.List;
-
 public class Submission {
-    private List<String> taskFiles;
+    private String taskFile;
 
-    public Submission(List<String> taskFiles) {
-        this.taskFiles = taskFiles;
+    public Submission(String taskFile) {
+        this.taskFile = taskFile;
     }
 
     public Submission() {
     }
 
-    public List<String> getTaskFile() {
-        return taskFiles;
+    public String getTaskFile() {
+        return taskFile;
     }
 
-    public void setTaskFile(List<String> taskFiles) {
-        this.taskFiles = taskFiles;
+    public void setTaskFile(String taskFile) {
+        this.taskFile = taskFile;
     }
 }

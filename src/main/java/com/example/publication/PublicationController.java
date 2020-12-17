@@ -9,7 +9,7 @@ import java.util.Arrays;
 import java.util.List;
 
 @RestController
-@RequestMapping("publications")
+@RequestMapping("api/publications")
 public class PublicationController {
     PublicationService publicationService = new PublicationService();
 
