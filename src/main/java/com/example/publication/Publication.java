@@ -1,6 +1,6 @@
 package com.example.publication;
 
-public class Publication {
+abstract class Publication {
     private String text;
 
     public Publication(String text) {
