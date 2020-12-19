@@ -34,4 +34,10 @@ public class PublicationService {
         publication.setTitle(title);
         return publication;
     }
+
+    public Publication removePublication(int id) {
+        Publication publication = getById(id);
+        publications.removeIf(pub -> pub.getId() == id);
+        return publication;
+    }
 }

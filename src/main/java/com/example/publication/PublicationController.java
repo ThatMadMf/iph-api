@@ -44,4 +44,10 @@ public class PublicationController {
     public Publication ChangePublicationTitle(@RequestBody InputData input, @PathVariable int id) {
         return publicationService.changeTitle(id, input.getTitle());
     }
+
+    @CrossOrigin
+    @DeleteMapping("/{id}")
+    public Publication RemovePublication(@PathVariable int id) {
+        return publicationService.removePublication(id);
+    }
 }
