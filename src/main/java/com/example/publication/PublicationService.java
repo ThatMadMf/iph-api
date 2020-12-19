@@ -18,8 +18,8 @@ public class PublicationService {
         return publications;
     }
 
-    public Optional<Publication> getById(int id) {
-        return publications.stream().filter(pub -> pub.getId() == id).findFirst();
+    public Publication getById(int id) {
+        return publications.stream().filter(pub -> pub.getId() == id).findFirst().orElse(null);
     }
 
     public void createNewWork(Work work) {
@@ -29,7 +29,9 @@ public class PublicationService {
         publications.add(announcement);
     }
 
-//    public Publication changeTitle(Publication publication) {
-//        return
-//    }
+    public Publication changeTitle(int id, String title) {
+        Publication publication = getById(id);
+        publication.setTitle(title);
+        return publication;
+    }
 }

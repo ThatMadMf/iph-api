@@ -20,7 +20,7 @@ public class PublicationController {
 
     @CrossOrigin
     @GetMapping("/{id}")
-    public Optional<Publication> GetById(@PathVariable int id) {
+    public Publication GetById(@PathVariable int id) {
         return publicationService.getById(id);
     }
 
@@ -39,9 +39,9 @@ public class PublicationController {
         return ResponseEntity.ok(HttpStatus.OK);
     }
 
-//    @CrossOrigin
-//    @PutMapping("/{id}")
-//    public Publication ChangePublicationTitle(@RequestBody String title, @PathVariable int id) {
-//        return publicationService.changeTitle(id, title);
-//    }
+    @CrossOrigin
+    @PutMapping("/{id}")
+    public Publication ChangePublicationTitle(@RequestBody InputData input, @PathVariable int id) {
+        return publicationService.changeTitle(id, input.getTitle());
+    }
 }
