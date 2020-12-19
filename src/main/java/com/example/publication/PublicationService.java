@@ -6,12 +6,12 @@ import java.util.*;
 
 @Service
 public class PublicationService {
-    private final List<Publication> publications;
+    private final ArrayList<Publication> publications = new ArrayList<>();
 
     public PublicationService() {
-        publications = Arrays.asList(new Work(1, "Lab1", "Need to write something", new GregorianCalendar(2017, Calendar.JANUARY , 25)),
-                new Announcement(2, "Announcement about deadline", "Deadline delayed for 3 days"),
-                new Work(3, "Lab2", "Need to code something"));
+        publications.add(new Work(1, "Lab1", "Need to write something", new GregorianCalendar(2017, Calendar.JANUARY , 25)));
+        publications.add(new Announcement(2, "Announcement about deadline", "Deadline delayed for 3 days"));
+        publications.add(new Work(3, "Lab2", "Need to code something"));
     }
 
     public List<Publication> getAll() {
@@ -22,8 +22,11 @@ public class PublicationService {
         return publications.stream().filter(pub -> pub.getId() == id).findFirst();
     }
 
-    public void createNewPublication(Publication publication) {
-        publications.add(publication);
+    public void createNewWork(Work work) {
+        publications.add(work);
+    }
+    public void createNewAnnouncement(Announcement announcement) {
+        publications.add(announcement);
     }
 
 //    public Publication changeTitle(Publication publication) {
