@@ -2,31 +2,43 @@ package com.example.submission;
 
 import com.example.users.Student;
 
-public class Submission {
-    private String taskFile;
-    private Student owner;
+import java.util.ArrayList;
 
-    public Submission(String taskFile, Student owner) {
-        this.taskFile = taskFile;
+public class Submission {
+    private int workId;
+    private int studentId;
+    private ArrayList<String> taskFiles;
+
+    public Submission(int workId, int studentId, ArrayList<String> taskFiles) {
+        this.workId = workId;
+        this.studentId = studentId;
+        this.taskFiles = taskFiles;
     }
 
     public Submission() {
     }
 
-    public String getTaskFile() {
-        return taskFile;
+    public int getWorkId() {
+        return workId;
     }
 
-    public void setTaskFile(String taskFile) {
-        this.taskFile = taskFile;
+    public void setWorkId(int workId) {
+        this.workId = workId;
     }
 
-
-    public Student getOwner() {
-        return owner;
+    public int getStudentId() {
+        return studentId;
     }
 
-    public void setOwner(Student owner) {
-        this.owner = owner;
+    public void setStudentId(int studentId) {
+        this.studentId = studentId;
+    }
+
+    public ArrayList<String> getTaskFiles() {
+        return taskFiles;
+    }
+
+    public void setTaskFiles(ArrayList<String> taskFiles) {
+        this.taskFiles = taskFiles;
     }
 }

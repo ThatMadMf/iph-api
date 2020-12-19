@@ -3,26 +3,38 @@ package com.example.submission;
 import com.example.users.User;
 import com.example.users.Student;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class SubmissionService {
-    private final ArrayList<Submission> submissions;
+    private final ArrayList<Submission> submissions = new ArrayList<>();
 
     public SubmissionService() {
-        Student student1 = new Student("student1");
-        submissions = new ArrayList<>();
-        submissions.add(new Submission("lab1.txt", student1));
-        submissions.add(new Submission("lab2.txt", student1));
+        submissions.add(new Submission(1, 1, new ArrayList<>(Collections.singletonList("lab1.txt"))));
+        submissions.add(new Submission(2, 2, new ArrayList<>(Collections.singletonList("lab2.txt"))));
     }
 
-    public List<Submission> getAll() {
+    public ArrayList<Submission> getAll() {
         return submissions;
     }
 
-    public void sendSubmission(SubmissionsList newSubmissions) {
+    public List<Submission> sendSubmission(SubmissionsList newSubmissions) {
         submissions.addAll(newSubmissions.getSubmissions());
+        return submissions;
+    }
+
+    public List<Submission> getByStudentId(int id) {
+        return submissions.stream().filter(pub -> pub.getStudentId() == id).collect(Collectors.toList());
+    }
+
+    public List<Submission> cancelSubmission(int studentId, int workId) {
+        submissions.removeIf(sub -> sub.getStudentId() == studentId && sub.getWorkId() == workId);
+        return submissions;
     }
 }
