@@ -1,5 +1,7 @@
 package com.example.submission;
 
+import com.example.users.User;
+import com.example.users.Student;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -10,9 +12,10 @@ public class SubmissionService {
     private final ArrayList<Submission> submissions;
 
     public SubmissionService() {
+        Student student1 = new Student("student1");
         submissions = new ArrayList<>();
-        submissions.add(new Submission("lab1.txt"));
-        submissions.add(new Submission("lab2.txt"));
+        submissions.add(new Submission("lab1.txt", student1));
+        submissions.add(new Submission("lab2.txt", student1));
     }
 
     public List<Submission> getAll() {
