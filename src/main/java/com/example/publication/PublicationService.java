@@ -43,7 +43,13 @@ public class PublicationService {
     }
 
     public Publication getById(int id) {
-        return publications.stream().filter(pub -> pub.getId() == id).findFirst().orElse(null);
+        return publications.stream().filter(p -> p.getId() == id).findFirst().orElse(null);
+    }
+
+    public ResponseModel getFullPublicationById(int id) {
+        Publication pub = getById(id);
+        return new ResponseModel(pub.getId(), getSubjectById(pub.getSubjectId()),
+                pub.getTitle(), pub.getText(), getTeacherById(pub.getAuthorId()), pub.getDeadline());
     }
 
     public void createNewWork(Work work) {

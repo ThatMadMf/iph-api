@@ -19,8 +19,8 @@ public class PublicationController {
 
     @CrossOrigin
     @GetMapping("/{id}")
-    public Publication GetById(@PathVariable int id) {
-        return publicationService.getById(id);
+    public ResponseModel getFullPublicationById(@PathVariable int id) {
+        return publicationService.getFullPublicationById(id);
     }
 
     @CrossOrigin
