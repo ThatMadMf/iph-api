@@ -42,7 +42,7 @@ public class PublicationService {
         ArrayList<ResponseModel> allPublications = new ArrayList<>();
         publications.forEach(pub -> allPublications
                         .add(new ResponseModel(pub.getId(), getSubjectById(pub.getSubjectId()),
-                                pub.getTitle(), pub.getText(), getTeacherById(pub.getAuthorId()), pub.getDeadline())));
+                                pub.getTitle(), pub.getText(), getTeacherById(pub.getAuthorId()), pub.getCreationDate(), pub.getDeadline())));
         return allPublications;
     }
 
@@ -53,7 +53,7 @@ public class PublicationService {
     public ResponseModel getFullPublicationById(int id) {
         Publication pub = getById(id);
         return new ResponseModel(pub.getId(), getSubjectById(pub.getSubjectId()),
-                pub.getTitle(), pub.getText(), getTeacherById(pub.getAuthorId()), pub.getDeadline());
+                pub.getTitle(), pub.getText(), getTeacherById(pub.getAuthorId()), pub.getCreationDate(), pub.getDeadline());
     }
 
     public void createNewWork(Work work) {
@@ -101,7 +101,7 @@ public class PublicationService {
         publications.stream().filter(pub -> pub.getSubjectId() == subjectId)
                 .forEach(pub -> publicationsOfSubject
                         .add(new ResponseModel(pub.getId(), getSubjectById(pub.getSubjectId()),
-                                pub.getTitle(), pub.getText(), getTeacherById(pub.getAuthorId()), pub.getDeadline())));
+                                pub.getTitle(), pub.getText(), getTeacherById(pub.getAuthorId()), pub.getCreationDate(), pub.getDeadline())));
         return publicationsOfSubject;
     }
 
