@@ -38,8 +38,12 @@ public class PublicationService {
         publications.add(new Work(3, 2, "Lab2", "Need to code something", 4));
     }
 
-    public List<Publication> getAll() {
-        return publications;
+    public ArrayList<ResponseModel> getAll() {
+        ArrayList<ResponseModel> allPublications = new ArrayList<>();
+        publications.forEach(pub -> allPublications
+                        .add(new ResponseModel(pub.getId(), getSubjectById(pub.getSubjectId()),
+                                pub.getTitle(), pub.getText(), getTeacherById(pub.getAuthorId()), pub.getDeadline())));
+        return allPublications;
     }
 
     public Publication getById(int id) {
