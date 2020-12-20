@@ -5,34 +5,37 @@ import java.util.GregorianCalendar;
 
 public class InputData {
     private int id;
+    private int subjectId;
     private String title;
     private String text;
     private Calendar deadline = new GregorianCalendar(4000, Calendar.JANUARY , 25);
     private Type type = Type.ANNOUNCEMENT;
 
-
-    public InputData() {
-    }
-
-    public InputData(int id, String title, String text, Type type) {
+    public InputData(int id, int subjectId, String title, String text, Type type) {
         this.id = id;
+        this.subjectId = subjectId;
         this.title = title;
         this.text = text;
         this.type = type;
     }
 
-    public InputData(int id, String title, String text, Calendar deadline, Type type) {
+    public InputData(int id, int subjectId, String title, String text, Calendar deadline, Type type) {
         this.id = id;
+        this.subjectId = subjectId;
         this.title = title;
         this.text = text;
         this.deadline = deadline;
         this.type = type;
     }
 
-    public InputData(int id, String title, String text) {
+    public InputData(int id, int subjectId, String title, String text) {
         this.id = id;
+        this.subjectId = subjectId;
         this.title = title;
         this.text = text;
+    }
+
+    public InputData() {
     }
 
     public int getId() {
@@ -73,5 +76,13 @@ public class InputData {
 
     public void setType(Type type) {
         this.type = type;
+    }
+
+    public int getSubjectId() {
+        return subjectId;
+    }
+
+    public void setSubjectId(int subjectId) {
+        this.subjectId = subjectId;
     }
 }

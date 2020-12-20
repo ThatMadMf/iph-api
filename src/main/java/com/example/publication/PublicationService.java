@@ -1,17 +1,36 @@
 package com.example.publication;
 
+import com.example.users.Group;
+import com.example.users.Student;
+import com.example.users.Subject;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
 
 @Service
 public class PublicationService {
+    private final ArrayList<Subject> subjects = new ArrayList<>();
+    private final ArrayList<Group> groups = new ArrayList<>();
+    private final ArrayList<Student> students = new ArrayList<>();
     private final ArrayList<Publication> publications = new ArrayList<>();
 
     public PublicationService() {
-        publications.add(new Work(1, "Lab1", "Need to write something", new GregorianCalendar(2017, Calendar.JANUARY , 25)));
-        publications.add(new Announcement(2, "Announcement about deadline", "Deadline delayed for 3 days"));
-        publications.add(new Work(3, "Lab2", "Need to code something"));
+        subjects.add(new Subject(1, "Math"));
+        subjects.add(new Subject(2, "Web"));
+        subjects.add(new Subject(3, "Economy"));
+        subjects.add(new Subject(4, "PE"));
+
+        groups.add(new Group(1, "KC-172", new ArrayList<>(Arrays.asList(1, 2, 3))));
+        groups.add(new Group(2, "KC-173", new ArrayList<>(Arrays.asList(1, 3, 4))));
+
+        students.add(new Student(1, "Alina", 1));
+        students.add(new Student(2, "Maxim", 1));
+        students.add(new Student(3, "Vova", 2));
+
+        publications.add(new Work(1, 1,"Lab1", "Need to write something",
+                new GregorianCalendar(2017, Calendar.JANUARY , 25)));
+        publications.add(new Announcement(2, 1,"Announcement about deadline", "Deadline delayed for 3 days"));
+        publications.add(new Work(3, 2, "Lab2", "Need to code something"));
     }
 
     public List<Publication> getAll() {
@@ -25,6 +44,7 @@ public class PublicationService {
     public void createNewWork(Work work) {
         publications.add(work);
     }
+
     public void createNewAnnouncement(Announcement announcement) {
         publications.add(announcement);
     }
@@ -39,5 +59,37 @@ public class PublicationService {
         Publication publication = getById(id);
         publications.removeIf(pub -> pub.getId() == id);
         return publication;
+    }
+
+    public List<ResponseModel> getPublicationsOfStudent(int studentId) {
+        return getPublicationsOfGroupSubjects(getSubjectsIds(getGroup(studentId)));
+    }
+
+    public int getGroup(int studentId) {
+        return Objects.requireNonNull(students.stream().filter(stud -> stud.getId() == studentId).findFirst().orElse(null)).getGroupId();
+    }
+
+    public ArrayList<Integer> getSubjectsIds(int groupId) {
+        return Objects.requireNonNull(groups.stream().filter(g -> g.getId() == groupId).findFirst().orElse(null)).getSubjects();
+    }
+
+    public ArrayList<ResponseModel> getPublicationsOfGroupSubjects(ArrayList<Integer> subjectsIds) {
+        ArrayList<ResponseModel> studentsPublications = new ArrayList<>();
+        for (Integer subjectsId : subjectsIds) {
+            studentsPublications.addAll(getPublicationsOfSubject(subjectsId));
+        }
+        return studentsPublications;
+    }
+
+    public List<ResponseModel> getPublicationsOfSubject(int subjectId) {
+        ArrayList<ResponseModel> publicationsOfSubject = new ArrayList<>();
+        publications.stream().filter(pub -> pub.getSubjectId() == subjectId)
+                .forEach(pub -> publicationsOfSubject
+                        .add(new ResponseModel(pub.getId(), getSubjectById(pub.getSubjectId()), pub.getTitle(), pub.getText())));
+        return publicationsOfSubject;
+    }
+
+    public Subject getSubjectById(int id) {
+        return subjects.stream().filter(s -> s.getId() == id).findFirst().orElse(null);
     }
 }

@@ -1,13 +1,15 @@
 package com.example.users;
 
 public abstract class User {
+    private int id;
     private String name;
 
-    public User(String name) {
+    public User(int id, String name) {
+        this.id = id;
         this.name = name;
     }
 
-    public User() {
+   public User() {
     }
 
     public String getName() {
@@ -16,5 +18,13 @@ public abstract class User {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 }

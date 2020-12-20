@@ -1,20 +1,19 @@
 package com.example.publication;
 
+import com.example.users.Subject;
+
 abstract class Publication {
     private int id;
+    private int subjectId;
     private String title;
     private String text;
 
     public Publication() {
     }
 
-    public Publication(String title, String text) {
-        this.title = title;
-        this.text = text;
-    }
-
-    public Publication(int id, String title, String text) {
+    public Publication(int id, int subjectId, String title, String text) {
         this.id = id;
+        this.subjectId = subjectId;
         this.title = title;
         this.text = text;
     }
@@ -41,6 +40,14 @@ abstract class Publication {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public int getSubjectId() {
+        return subjectId;
+    }
+
+    public void setSubjectId(int subjectId) {
+        this.subjectId = subjectId;
     }
 }
 

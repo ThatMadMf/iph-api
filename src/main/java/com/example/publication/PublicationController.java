@@ -4,6 +4,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -25,14 +26,20 @@ public class PublicationController {
     }
 
     @CrossOrigin
+    @GetMapping("student/{id}")
+    public List<ResponseModel> GetByStudentId(@PathVariable int id) {
+        return publicationService.getPublicationsOfStudent(id);
+    }
+
+    @CrossOrigin
     @PostMapping()
     public ResponseEntity CreatePublication(@RequestBody InputData input) {
         if(input.getType() == Type.ANNOUNCEMENT) {
-            Announcement announcement = new Announcement(input.getId(), input.getTitle(), input.getText());
+            Announcement announcement = new Announcement(input.getId(), input.getSubjectId(), input.getTitle(), input.getText());
             publicationService.createNewAnnouncement(announcement);
         }
         if(input.getType() == Type.WORK) {
-            Work work = new Work(input.getId(), input.getTitle(), input.getText(), input.getDeadline());
+            Work work = new Work(input.getId(), input.getSubjectId(), input.getTitle(), input.getText(), input.getDeadline());
             publicationService.createNewWork(work);
         }
 
