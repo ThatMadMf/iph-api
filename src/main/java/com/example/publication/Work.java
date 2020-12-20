@@ -6,13 +6,13 @@ import java.util.GregorianCalendar;
 public class Work extends Publication {
     private Calendar deadline = new GregorianCalendar(4000, Calendar.JANUARY , 25);
 
-    public Work(int id, int subjectId, String title, String text, Calendar deadline) {
-        super(id, subjectId, title, text);
+    public Work(int id, int subjectId, String title, String text, int authorId, Calendar deadline) {
+        super(id, subjectId, title, text, authorId);
         this.deadline = deadline;
     }
 
-    public Work(int id, int subjectId, String title, String text) {
-        super(id, subjectId, title, text);
+    public Work(int id, int subjectId, String title, String text, int authorId) {
+        super(id, subjectId, title, text, authorId);
     }
 
 

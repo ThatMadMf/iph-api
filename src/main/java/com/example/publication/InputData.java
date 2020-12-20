@@ -8,31 +8,35 @@ public class InputData {
     private int subjectId;
     private String title;
     private String text;
+    private int authorId;
     private Calendar deadline = new GregorianCalendar(4000, Calendar.JANUARY , 25);
     private Type type = Type.ANNOUNCEMENT;
 
-    public InputData(int id, int subjectId, String title, String text, Type type) {
+    public InputData(int id, int subjectId, String title, String text, int authorId, Type type) {
         this.id = id;
         this.subjectId = subjectId;
         this.title = title;
         this.text = text;
+        this.authorId = authorId;
         this.type = type;
     }
 
-    public InputData(int id, int subjectId, String title, String text, Calendar deadline, Type type) {
+    public InputData(int id, int subjectId, String title, String text, int authorId, Calendar deadline, Type type) {
         this.id = id;
         this.subjectId = subjectId;
         this.title = title;
         this.text = text;
+        this.authorId = authorId;
         this.deadline = deadline;
         this.type = type;
     }
 
-    public InputData(int id, int subjectId, String title, String text) {
+    public InputData(int id, int subjectId, String title, String text, int authorId) {
         this.id = id;
         this.subjectId = subjectId;
         this.title = title;
         this.text = text;
+        this.authorId = authorId;
     }
 
     public InputData() {
@@ -84,5 +88,13 @@ public class InputData {
 
     public void setSubjectId(int subjectId) {
         this.subjectId = subjectId;
+    }
+
+    public int getAuthorId() {
+        return authorId;
+    }
+
+    public void setAuthorId(int authorId) {
+        this.authorId = authorId;
     }
 }
