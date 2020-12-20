@@ -3,19 +3,23 @@ package com.example.publication;
 import com.example.users.Subject;
 import com.example.users.Teacher;
 
+import java.util.Calendar;
+
 public class ResponseModel {
     private int id;
     private Subject subject;
     private String title;
     private String text;
     private Teacher author;
+    private Calendar deadline;
 
-    public ResponseModel(int id, Subject subject, String title, String text, Teacher author) {
+    public ResponseModel(int id, Subject subject, String title, String text, Teacher author, Calendar deadline) {
         this.id = id;
         this.subject = subject;
         this.title = title;
         this.text = text;
         this.author = author;
+        this.deadline = deadline;
     }
 
     public ResponseModel() {
@@ -59,5 +63,13 @@ public class ResponseModel {
 
     public void setAuthor(Teacher author) {
         this.author = author;
+    }
+
+    public Calendar getDeadline() {
+        return deadline;
+    }
+
+    public void setDeadline(Calendar deadline) {
+        this.deadline = deadline;
     }
 }

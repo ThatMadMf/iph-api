@@ -91,7 +91,7 @@ public class PublicationService {
         publications.stream().filter(pub -> pub.getSubjectId() == subjectId)
                 .forEach(pub -> publicationsOfSubject
                         .add(new ResponseModel(pub.getId(), getSubjectById(pub.getSubjectId()),
-                                pub.getTitle(), pub.getText(), getTeacherById(pub.getAuthorId()))));
+                                pub.getTitle(), pub.getText(), getTeacherById(pub.getAuthorId()), pub.getDeadline())));
         return publicationsOfSubject;
     }
 

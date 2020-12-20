@@ -1,6 +1,7 @@
 package com.example.publication;
 
 import java.time.LocalDate;
+import java.util.Calendar;
 
 abstract class Publication {
     private int id;
@@ -9,6 +10,7 @@ abstract class Publication {
     private String text;
     private int authorId;
     private LocalDate creationDate;
+    private Calendar deadline;
 
     public Publication() {
     }
@@ -68,6 +70,14 @@ abstract class Publication {
 
     public void setAuthorId(int authorId) {
         this.authorId = authorId;
+    }
+
+    public Calendar getDeadline() {
+        return deadline;
+    }
+
+    public void setDeadline(Calendar deadline) {
+        this.deadline = deadline;
     }
 }
 
