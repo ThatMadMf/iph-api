@@ -1,0 +1,5 @@
+CREATE TABLE IF NOT EXISTS groups
+(
+    id    SERIAL PRIMARY KEY,
+    title VARCHAR(32)
+);

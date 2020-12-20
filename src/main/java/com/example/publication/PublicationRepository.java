@@ -2,7 +2,7 @@ package com.example.publication;
 
 import java.util.List;
 
-public interface IPublicationRepository {
+public interface PublicationRepository {
     List<Publication> getAll();
     Publication getById(int id);
     void createNewWork(Work work);
