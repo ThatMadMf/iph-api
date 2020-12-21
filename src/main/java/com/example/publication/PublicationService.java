@@ -28,17 +28,29 @@ public class PublicationService {
         ArrayList<Publication> pubs = publicationRepository.getAll();
 
         pubs.forEach(pub -> allPublications
-                .add(new ResponseModel(pub.getId(), subjectRepository.getSubjectById(pub.getSubjectId()),
-                        pub.getTitle(), pub.getText(), userRepository.getById(pub.getAuthorId()),
-                        pub.getCreationDate(), pub.getDeadline())));
+                .add(new ResponseModel(
+                        pub.getId(),
+                        subjectRepository.getSubjectById(pub.getSubjectId()),
+                        pub.getTitle(),
+                        pub.getText(),
+                        userRepository.getById(pub.getAuthorId()),
+                        pub.getCreationDate(),
+                        pub.getDeadline())
+                ));
         return allPublications;
     }
 
     public ResponseModel getById(int id) {
         Publication pub = publicationRepository.getById(id);
-        return new ResponseModel(pub.getId(), subjectRepository.getSubjectById(pub.getSubjectId()),
-                pub.getTitle(), pub.getText(), userRepository.getById(pub.getAuthorId()),
-                pub.getCreationDate(), pub.getDeadline());
+        return new ResponseModel(
+                pub.getId(),
+                subjectRepository.getSubjectById(pub.getSubjectId()),
+                pub.getTitle(),
+                pub.getText(),
+                userRepository.getById(pub.getAuthorId()),
+                pub.getCreationDate(),
+                pub.getDeadline()
+        );
     }
 
     public void createNewWork(Work work) {
@@ -58,14 +70,22 @@ public class PublicationService {
     }
 
     public List<ResponseModel> getPublicationsOfStudent(int studentId) {
-        ArrayList<Integer> subjectsIds = groupRepository.getSubjectIds(userRepository.getStudentById(studentId).getGroupId());
+        ArrayList<Integer> subjectsIds = groupRepository.getSubjectIds(
+                userRepository.getStudentById(studentId).getGroupId()
+        );
 
         ArrayList<ResponseModel> studentsPublications = new ArrayList<>();
         for (Integer subjectsId : subjectsIds) {
             publicationRepository.getPublicationsOfSubject(subjectsId)
-                    .forEach(pub -> studentsPublications.add(new ResponseModel(pub.getId(), subjectRepository.getSubjectById(pub.getSubjectId()),
-                            pub.getTitle(), pub.getText(), userRepository.getTeacherById(pub.getAuthorId()),
-                            pub.getCreationDate(), pub.getDeadline())));
+                    .forEach(pub -> studentsPublications.add(new ResponseModel(
+                            pub.getId(),
+                            subjectRepository.getSubjectById(pub.getSubjectId()),
+                            pub.getTitle(),
+                            pub.getText(),
+                            userRepository.getTeacherById(pub.getAuthorId()),
+                            pub.getCreationDate(),
+                            pub.getDeadline())
+                    ));
         }
 
         return studentsPublications;

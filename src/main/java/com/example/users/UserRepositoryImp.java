@@ -30,6 +30,9 @@ public class UserRepositoryImp implements UserRepository {
 
     @Override
     public Student getStudentById(int id) {
-        return students.stream().filter(s -> s.getId() == id && s.getRole().equals("STUDENT")).findFirst().orElse(null);
+        return students.stream()
+                .filter(s -> s.getId() == id && s.getRole().equals("STUDENT"))
+                .findFirst()
+                .orElse(null);
     }
 }

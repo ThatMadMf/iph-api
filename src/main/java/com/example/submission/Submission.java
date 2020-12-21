@@ -1,9 +1,5 @@
 package com.example.submission;
 
-import com.example.users.Student;
-
-import java.util.ArrayList;
-
 public class Submission {
     private int workId;
     private int studentId;

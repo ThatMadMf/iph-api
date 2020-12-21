@@ -37,12 +37,25 @@ public class PublicationController {
     @CrossOrigin
     @PostMapping()
     public ResponseEntity CreatePublication(@RequestBody InputData input) {
-        if(input.getType() == Type.ANNOUNCEMENT) {
-            Announcement announcement = new Announcement(input.getId(), input.getSubjectId(), input.getTitle(), input.getText(), input.getAuthorId());
+        if (input.getType() == Type.ANNOUNCEMENT) {
+            Announcement announcement = new Announcement(
+                    input.getId(),
+                    input.getSubjectId(),
+                    input.getTitle(),
+                    input.getText(),
+                    input.getAuthorId()
+            );
             publicationService.createNewAnnouncement(announcement);
         }
-        if(input.getType() == Type.WORK) {
-            Work work = new Work(input.getId(), input.getSubjectId(), input.getTitle(), input.getText(), input.getAuthorId(), input.getDeadline());
+        if (input.getType() == Type.WORK) {
+            Work work = new Work(
+                    input.getId(),
+                    input.getSubjectId(),
+                    input.getTitle(),
+                    input.getText(),
+                    input.getAuthorId(),
+                    input.getDeadline()
+            );
             publicationService.createNewWork(work);
         }
 
