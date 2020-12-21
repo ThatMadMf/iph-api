@@ -1,8 +1,5 @@
 package com.example.submission;
 
-import com.example.publication.*;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;

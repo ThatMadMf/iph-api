@@ -1,13 +1,8 @@
 package com.example.submission;
 
-import com.example.users.User;
-import com.example.users.Student;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 

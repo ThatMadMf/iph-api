@@ -8,8 +8,8 @@ import java.util.Arrays;
 @Repository
 public class UserRepositoryImp implements UserRepository {
     private final ArrayList<Teacher> teachers = new ArrayList<>(Arrays.asList(
-            new Teacher(4, "name1", "TEACHER","2 lvl", new ArrayList<>(Arrays.asList(1, 2, 3))),
-            new Teacher(5, "name2", "TEACHER","1 lvl", new ArrayList<>(Arrays.asList(4)))
+            new Teacher(4, "name1", "TEACHER", "2 lvl", new ArrayList<>(Arrays.asList(1, 2, 3))),
+            new Teacher(5, "name2", "TEACHER", "1 lvl", new ArrayList<>(Arrays.asList(4)))
     ));
 
     private final ArrayList<Student> students = new ArrayList<>(Arrays.asList(
