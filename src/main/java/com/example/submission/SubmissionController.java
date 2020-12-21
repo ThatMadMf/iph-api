@@ -5,6 +5,13 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
+import java.io.OutputStream;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 @RestController
@@ -23,9 +30,18 @@ public class SubmissionController {
     }
 
     @CrossOrigin
-    @PostMapping("test")
-    public ResponseEntity Test(String model, MultipartFile file) {
-        System.out.println(file.getName());
+    @PostMapping("submitPermission")
+    public ResponseEntity Test(String workId, String studentId, String content, MultipartFile file) {
+        ArrayList<Submission> newSubmission = new ArrayList<>(Arrays.asList( new Submission(Integer.parseInt(workId),
+                Integer.parseInt(studentId), content)));
+        submissionService.sendSubmission(new SubmissionsList(newSubmission));
+
+        Path path = Paths.get(System.getProperty("user.dir") + "/submissions/" + file.getOriginalFilename());
+        try (OutputStream os = Files.newOutputStream(path)) {
+            os.write(file.getBytes());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         return ResponseEntity.ok(HttpStatus.OK);
     }
 
