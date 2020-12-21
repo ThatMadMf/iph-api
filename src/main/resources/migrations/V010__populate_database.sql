@@ -14,7 +14,7 @@ VALUES (1, 1),
        (1, 3),
        (2, 1);
 
-INSERT INTO users(role, name)
+INSERT INTO users(name, role)
 VALUES ('Alina', 'STUDENT'),
        ('Maxim', 'STUDENT'),
        ('Vova', 'STUDENT'),
