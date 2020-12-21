@@ -1,7 +1,7 @@
 package com.example.publication;
 
+import java.time.LocalDateTime;
 import java.util.Calendar;
-import java.util.GregorianCalendar;
 
 public class InputData {
     private int id;
@@ -9,7 +9,7 @@ public class InputData {
     private String title;
     private String text;
     private int authorId;
-    private Calendar deadline = new GregorianCalendar(4000, Calendar.JANUARY , 25);
+    private LocalDateTime deadline = LocalDateTime.of(4000, 1, 25, 0, 0);;
     private Type type = Type.ANNOUNCEMENT;
 
     public InputData(int id, int subjectId, String title, String text, int authorId, Type type) {
@@ -21,7 +21,7 @@ public class InputData {
         this.type = type;
     }
 
-    public InputData(int id, int subjectId, String title, String text, int authorId, Calendar deadline, Type type) {
+    public InputData(int id, int subjectId, String title, String text, int authorId, LocalDateTime deadline, Type type) {
         this.id = id;
         this.subjectId = subjectId;
         this.title = title;
@@ -66,11 +66,11 @@ public class InputData {
         this.text = text;
     }
 
-    public Calendar getDeadline() {
+    public LocalDateTime getDeadline() {
         return deadline;
     }
 
-    public void setDeadline(Calendar deadline) {
+    public void setDeadline(LocalDateTime deadline) {
         this.deadline = deadline;
     }
 

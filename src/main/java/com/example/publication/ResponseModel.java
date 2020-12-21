@@ -1,24 +1,27 @@
 package com.example.publication;
 
-import com.example.users.Subject;
+import com.example.subject.Subject;
 import com.example.users.Teacher;
+import com.example.users.User;
 
-import java.util.Calendar;
+import java.time.LocalDateTime;
 
 public class ResponseModel {
     private int id;
     private Subject subject;
     private String title;
     private String text;
-    private Teacher author;
-    private Calendar deadline;
+    private User author;
+    private LocalDateTime creationDate;
+    private LocalDateTime deadline;
 
-    public ResponseModel(int id, Subject subject, String title, String text, Teacher author, Calendar deadline) {
+    public ResponseModel(int id, Subject subject, String title, String text, User author, LocalDateTime creationDate, LocalDateTime deadline) {
         this.id = id;
         this.subject = subject;
         this.title = title;
         this.text = text;
         this.author = author;
+        this.creationDate = creationDate;
         this.deadline = deadline;
     }
 
@@ -57,7 +60,7 @@ public class ResponseModel {
         this.text = text;
     }
 
-    public Teacher getAuthor() {
+    public User getAuthor() {
         return author;
     }
 
@@ -65,11 +68,19 @@ public class ResponseModel {
         this.author = author;
     }
 
-    public Calendar getDeadline() {
+    public LocalDateTime getDeadline() {
         return deadline;
     }
 
-    public void setDeadline(Calendar deadline) {
+    public void setDeadline(LocalDateTime deadline) {
         this.deadline = deadline;
+    }
+
+    public LocalDateTime getCreationDate() {
+        return creationDate;
+    }
+
+    public void setCreationDate(LocalDateTime creationDate) {
+        this.creationDate = creationDate;
     }
 }

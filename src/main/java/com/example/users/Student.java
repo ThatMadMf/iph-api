@@ -3,8 +3,8 @@ package com.example.users;
 public class Student extends User {
     private int GroupId;
 
-    public Student(int id, String name, int groupId) {
-        super(id, name);
+    public Student(int id, String name, String role, int groupId) {
+        super(id, name, role);
         GroupId = groupId;
     }
 
