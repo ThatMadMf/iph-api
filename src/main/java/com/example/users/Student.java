@@ -1,21 +1,21 @@
 package com.example.users;
 
 public class Student extends User {
-    private int GroupId;
+    private int groupId;
 
     public Student(int id, String name, String role, int groupId) {
         super(id, name, role);
-        GroupId = groupId;
+        this.groupId = groupId;
     }
 
     public Student() {
     }
 
     public int getGroupId() {
-        return GroupId;
+        return groupId;
     }
 
     public void setGroupId(int groupId) {
-        GroupId = groupId;
+        this.groupId = groupId;
     }
 }

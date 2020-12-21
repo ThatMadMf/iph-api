@@ -12,6 +12,10 @@ public class Teacher extends User {
         this.subjects = subjects;
     }
 
+    public Teacher() {
+
+    }
+
     public String getDegree() {
         return degree;
     }
