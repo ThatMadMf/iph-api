@@ -38,6 +38,6 @@ VALUES (1, 4),
 
 INSERT INTO publications(subject_id, title, text, author_id, creation_date, deadline)
 VALUES (1, 'Lab1', 'Need to write something', 4, now(), now() + interval '1' day),
-       (1, 'Announcement about deadline', '"Deadline delayed for 3 days', 5, now(), null),
-       (1, 'Lab2', 'Need to write something', 4, now(), null);
+       (2, 'Announcement about deadline', '"Deadline delayed for 3 days', 5, now(), null),
+       (3, 'Lab2', 'Need to write something', 4, now(), null);
 
