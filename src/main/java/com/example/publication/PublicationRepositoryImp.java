@@ -51,7 +51,8 @@ public class PublicationRepositoryImp implements PublicationRepository {
     @Override
     public ArrayList<Publication> getPublicationsOfSubject(int subjectId) {
         ArrayList<Publication> publicationsOfSubject = new ArrayList<>();
-        publications.stream().filter(pub -> pub.getSubjectId() == subjectId)
+        publications.stream()
+                .filter(pub -> pub.getSubjectId() == subjectId)
                 .forEach(publicationsOfSubject::add);
         return publicationsOfSubject;
     }

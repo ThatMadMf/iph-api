@@ -15,6 +15,11 @@ public class GroupRepositoryImp implements GroupRepository {
 
     @Override
     public ArrayList<Integer> getSubjectIds(int id) {
-        return Objects.requireNonNull(groups.stream().filter(g -> g.getId() == id).findFirst().orElse(null)).getSubjects();
+        return Objects.requireNonNull(
+                groups.stream()
+                        .filter(g -> g.getId() == id)
+                        .findFirst()
+                        .orElse(null)
+        ).getSubjects();
     }
 }
