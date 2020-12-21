@@ -15,9 +15,8 @@ import java.util.stream.Collectors;
 public class SubmissionService {
     private final ArrayList<Submission> submissions = new ArrayList<>();
 
-    public SubmissionService() {
-        submissions.add(new Submission(1, 1, "lab1.txt"));
-        submissions.add(new Submission(2, 2, "lab2.txt"));
+    public SubmissionService(SubmissionRepository submissionRepository) {
+
     }
 
     public ArrayList<Submission> getAll() {
