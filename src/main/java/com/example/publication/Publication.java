@@ -1,7 +1,6 @@
 package com.example.publication;
 
-import java.time.LocalDate;
-import java.util.Calendar;
+import java.time.LocalDateTime;
 
 abstract class Publication {
     private int id;
@@ -9,8 +8,8 @@ abstract class Publication {
     private String title;
     private String text;
     private int authorId;
-    private LocalDate creationDate;
-    private Calendar deadline;
+    private LocalDateTime creationDate;
+    private LocalDateTime deadline;
 
     public Publication() {
     }
@@ -21,7 +20,7 @@ abstract class Publication {
         this.title = title;
         this.text = text;
         this.authorId = authorId;
-        this.creationDate = LocalDate.now();
+        this.creationDate = LocalDateTime.now();
     }
 
     public String getText() {
@@ -56,11 +55,11 @@ abstract class Publication {
         this.subjectId = subjectId;
     }
 
-    public LocalDate getCreationDate() {
+    public LocalDateTime getCreationDate() {
         return creationDate;
     }
 
-    public void setCreationDate(LocalDate creationDate) {
+    public void setCreationDate(LocalDateTime creationDate) {
         this.creationDate = creationDate;
     }
 
@@ -72,11 +71,11 @@ abstract class Publication {
         this.authorId = authorId;
     }
 
-    public Calendar getDeadline() {
+    public LocalDateTime getDeadline() {
         return deadline;
     }
 
-    public void setDeadline(Calendar deadline) {
+    public void setDeadline(LocalDateTime deadline) {
         this.deadline = deadline;
     }
 }

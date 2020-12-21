@@ -7,15 +7,12 @@ import java.util.ArrayList;
 public class Submission {
     private int workId;
     private int studentId;
-    private ArrayList<String> taskFiles;
+    private String content;
 
-    public Submission(int workId, int studentId, ArrayList<String> taskFiles) {
+    public Submission(int workId, int studentId, String content) {
         this.workId = workId;
         this.studentId = studentId;
-        this.taskFiles = taskFiles;
-    }
-
-    public Submission() {
+        this.content = content;
     }
 
     public int getWorkId() {
@@ -34,11 +31,11 @@ public class Submission {
         this.studentId = studentId;
     }
 
-    public ArrayList<String> getTaskFiles() {
-        return taskFiles;
+    public String getContent() {
+        return content;
     }
 
-    public void setTaskFiles(ArrayList<String> taskFiles) {
-        this.taskFiles = taskFiles;
+    public void setContent(String content) {
+        this.content = content;
     }
 }

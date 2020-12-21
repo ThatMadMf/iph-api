@@ -1,4 +1,4 @@
-package com.example.users;
+package com.example.group;
 
 import java.util.ArrayList;
 
@@ -11,11 +11,6 @@ public class Group {
         this.id = id;
         this.title = title;
         this.subjects = subjects;
-    }
-
-    public Group(int id, String title) {
-        this.id = id;
-        this.title = title;
     }
 
     public Group() {

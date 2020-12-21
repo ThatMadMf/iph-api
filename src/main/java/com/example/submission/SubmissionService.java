@@ -16,8 +16,8 @@ public class SubmissionService {
     private final ArrayList<Submission> submissions = new ArrayList<>();
 
     public SubmissionService() {
-        submissions.add(new Submission(1, 1, new ArrayList<>(Collections.singletonList("lab1.txt"))));
-        submissions.add(new Submission(2, 2, new ArrayList<>(Collections.singletonList("lab2.txt"))));
+        submissions.add(new Submission(1, 1, "lab1.txt"));
+        submissions.add(new Submission(2, 2, "lab2.txt"));
     }
 
     public ArrayList<Submission> getAll() {
