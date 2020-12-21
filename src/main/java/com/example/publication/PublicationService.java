@@ -65,8 +65,8 @@ public class PublicationService {
         return publicationRepository.changeTitle(id, title);
     }
 
-    public Publication removePublication(int id) {
-        return publicationRepository.removePublication(id);
+    public void removePublication(int id) {
+        publicationRepository.removePublication(id);
     }
 
     public List<ResponseModel> getPublicationsOfStudent(int studentId) {

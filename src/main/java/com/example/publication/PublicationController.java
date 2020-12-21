@@ -70,7 +70,7 @@ public class PublicationController {
 
     @CrossOrigin
     @DeleteMapping("/{id}")
-    public Publication RemovePublication(@PathVariable int id) {
-        return publicationService.removePublication(id);
+    public void RemovePublication(@PathVariable int id) {
+        publicationService.removePublication(id);
     }
 }

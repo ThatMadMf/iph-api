@@ -10,7 +10,7 @@ import java.sql.SQLException;
 public class DBSubjectRepository implements SubjectRepository {
 
     private static final String GET_SUBJECT_BY_ID = "select " +
-            "s.*, array_agg(gs.group_id) as groups, array_agg(st.teacher_id) as teachers from subjects as s " +
+            "s.*, array_agg(distinct(gs.group_id)) as groups, array_agg(distinct(st.teacher_id)) as teachers from subjects as s " +
             "join groups_subjects gs on s.id = gs.subject_id " +
             "join subjects_teachers st on s.id = st.subject_id " +
             "where s.id = ? " +

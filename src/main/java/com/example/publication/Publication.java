@@ -2,7 +2,7 @@ package com.example.publication;
 
 import java.time.LocalDateTime;
 
-abstract class Publication {
+public class Publication {
     private int id;
     private int subjectId;
     private String title;
