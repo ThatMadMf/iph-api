@@ -1,15 +1,12 @@
 package com.example.publication;
 
-import com.example.group.Group;
 import com.example.group.GroupRepository;
 import com.example.subject.SubjectRepository;
-import com.example.subject.SubjectRepositoryImp;
-import com.example.subject.SubjectService;
-import com.example.users.*;
-import com.example.subject.Subject;
+import com.example.users.UserRepository;
 import org.springframework.stereotype.Service;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Service
 public class PublicationService {

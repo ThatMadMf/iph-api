@@ -1,7 +1,6 @@
 package com.example.publication;
 
 import java.time.LocalDateTime;
-import java.util.Calendar;
 
 public class InputData {
     private int id;
@@ -9,7 +8,8 @@ public class InputData {
     private String title;
     private String text;
     private int authorId;
-    private LocalDateTime deadline = LocalDateTime.of(4000, 1, 25, 0, 0);;
+    private LocalDateTime deadline = LocalDateTime.of(4000, 1, 25, 0, 0);
+    ;
     private Type type = Type.ANNOUNCEMENT;
 
     public InputData(int id, int subjectId, String title, String text, int authorId, Type type) {
