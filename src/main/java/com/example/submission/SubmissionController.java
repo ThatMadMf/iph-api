@@ -7,7 +7,11 @@ import java.util.List;
 @RestController
 @RequestMapping("api/submissions")
 public class SubmissionController {
-    SubmissionService submissionService = new SubmissionService();
+    private final SubmissionService submissionService;
+
+    SubmissionController(SubmissionService submissionService) {
+        this.submissionService = submissionService;
+    }
 
     @CrossOrigin
     @GetMapping("student/{id}")

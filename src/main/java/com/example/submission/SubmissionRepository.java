@@ -6,9 +6,9 @@ import java.util.List;
 public interface SubmissionRepository {
     ArrayList<Submission> getAll();
 
-    List<Submission> sendSubmission(SubmissionsList newSubmissions);
+    ArrayList<Submission> sendSubmission(SubmissionsList newSubmissions);
 
     List<Submission> getByStudentId(int id);
 
-    List<Submission> cancelSubmission(int studentId, int workId);
+    ArrayList<Submission> cancelSubmission(int studentId, int workId);
 }

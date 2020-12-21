@@ -82,7 +82,7 @@ public class PublicationService {
                             subjectRepository.getSubjectById(pub.getSubjectId()),
                             pub.getTitle(),
                             pub.getText(),
-                            userRepository.getById(pub.getAuthorId()),
+                            userRepository.getTeacherById(pub.getAuthorId()),
                             pub.getCreationDate(),
                             pub.getDeadline())
                     ));
