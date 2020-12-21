@@ -10,7 +10,7 @@ public class DBGroupRepository implements GroupRepository {
 
     private static final String GET_SUBJECTS_IDS = "SELECT s.id FROM subjects AS s " +
             "JOIN groups_subjects gs on s.id = gs.subject_id " +
-            "WHERE gs.group_id = 2;";
+            "WHERE gs.group_id = ?;";
 
     private final JdbcTemplate jdbcTemplate;
 
@@ -20,6 +20,6 @@ public class DBGroupRepository implements GroupRepository {
 
     @Override
     public ArrayList<Integer> getSubjectIds(int id) {
-        return (ArrayList<Integer>) jdbcTemplate.queryForList(GET_SUBJECTS_IDS, Integer.class);
+        return (ArrayList<Integer>) jdbcTemplate.queryForList(GET_SUBJECTS_IDS, new Object[]{id}, Integer.class);
     }
 }

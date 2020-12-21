@@ -1,6 +1,11 @@
 package com.example.subject;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class Subject {
     private int id;
@@ -13,6 +18,13 @@ public class Subject {
         this.title = title;
         this.groups = groups;
         this.teachers = teachers;
+    }
+
+    public Subject(SubjectDto subjectDto) throws SQLException {
+        id = subjectDto.getId();
+        title = subjectDto.getTitle();
+        groups = new ArrayList<>(Arrays.asList((Integer[]) subjectDto.getGroups().getArray()));
+        teachers = new ArrayList<>(Arrays.asList((Integer[]) subjectDto.getTeachers().getArray()));
     }
 
     public Subject() {
