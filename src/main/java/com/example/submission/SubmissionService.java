@@ -8,27 +8,25 @@ import java.util.stream.Collectors;
 
 @Service
 public class SubmissionService {
-    private final ArrayList<Submission> submissions = new ArrayList<>();
+    private final SubmissionRepository submissionRepository;
 
     public SubmissionService(SubmissionRepository submissionRepository) {
-
+        this.submissionRepository = submissionRepository;
     }
 
     public ArrayList<Submission> getAll() {
-        return submissions;
+        return submissionRepository.getAll();
     }
 
     public List<Submission> sendSubmission(SubmissionsList newSubmissions) {
-        submissions.addAll(newSubmissions.getSubmissions());
-        return submissions;
+        return submissionRepository.sendSubmission(newSubmissions);
     }
 
     public List<Submission> getByStudentId(int id) {
-        return submissions.stream().filter(pub -> pub.getStudentId() == id).collect(Collectors.toList());
+        return submissionRepository.getByStudentId(id);
     }
 
     public List<Submission> cancelSubmission(int studentId, int workId) {
-        submissions.removeIf(sub -> sub.getStudentId() == studentId && sub.getWorkId() == workId);
-        return submissions;
+        return submissionRepository.cancelSubmission(studentId, workId);
     }
 }
