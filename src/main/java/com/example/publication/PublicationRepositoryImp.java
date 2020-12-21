@@ -8,9 +8,7 @@ import java.util.*;
 
 @Repository
 public class PublicationRepositoryImp implements PublicationRepository {
-    UserService userService = new UserService();
-
-    private ArrayList<Publication> publications = new ArrayList<>(Arrays.asList(
+    private final ArrayList<Publication> publications = new ArrayList<>(Arrays.asList(
             new Work(1, 1,"Lab1", "Need to write something", 4, LocalDateTime.now().plusDays(5)),
             new Announcement(2, 1,"Announcement about deadline", "Deadline delayed for 3 days", 5),
             new Work(3, 2, "Lab2", "Need to code something", 4)
@@ -28,17 +26,26 @@ public class PublicationRepositoryImp implements PublicationRepository {
 
     @Override
     public void createNewWork(Work work) {
-
+        publications.add(work);
     }
 
     @Override
     public void createNewAnnouncement(Announcement announcement) {
-
+        publications.add(announcement);
     }
 
     @Override
     public Publication removePublication(int id) {
-        return null;
+        Publication publication = publications.stream().filter(p -> p.getId() == id).findFirst().orElse(null);
+        publications.removeIf(pub -> pub.getId() == id);
+        return publication;
+    }
+
+    @Override
+    public Publication changeTitle(int id, String title) {
+        Publication publication = publications.stream().filter(p -> p.getId() == id).findFirst().orElse(null);
+        publication.setTitle(title);
+        return publication;
     }
 
     @Override

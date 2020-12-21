@@ -12,17 +12,14 @@ import java.util.*;
 
 @Service
 public class PublicationService {
-    private PublicationRepository publicationRepository;
-    private UserRepository userRepository;
-    private SubjectRepository subjectRepository;
+    private final PublicationRepository publicationRepository;
+    private final UserRepository userRepository;
+    private final SubjectRepository subjectRepository;
 
     public PublicationService(PublicationRepository publicationRepository, UserRepository userRepository, SubjectRepository subjectRepository) {
         this.publicationRepository = publicationRepository;
         this.userRepository = userRepository;
         this.subjectRepository = subjectRepository;
-    }
-
-    public PublicationService() {
     }
 
     public ArrayList<ResponseModel> getAll() {
@@ -43,39 +40,32 @@ public class PublicationService {
                 pub.getCreationDate(), pub.getDeadline());
     }
 
-//    public ResponseModel getFullPublicationById(int id) {
-//        Publication pub = getById(id);
-//        return new ResponseModel(pub.getId(), getSubjectById(pub.getSubjectId()),
-//                pub.getTitle(), pub.getText(), getTeacherById(pub.getAuthorId()), pub.getCreationDate(), pub.getDeadline());
-//    }
-//
-//    public void createNewWork(Work work) {
-//        publications.add(work);
-//    }
-//
-//    public void createNewAnnouncement(Announcement announcement) {
-//        publications.add(announcement);
-//    }
-//
-//    public Publication changeTitle(int id, String title) {
-//        Publication publication = getById(id);
-//        publication.setTitle(title);
-//        return publication;
-//    }
-//
-//    public Publication removePublication(int id) {
-//        Publication publication = getById(id);
-//        publications.removeIf(pub -> pub.getId() == id);
-//        return publication;
-//    }
-//
-//    public List<ResponseModel> getPublicationsOfStudent(int studentId) {
-//        return getPublicationsOfGroupSubjects(getSubjectsIds(getGroup(studentId)));
-//    }
-//
-//    public int getGroup(int studentId) {
-//        return Objects.requireNonNull(students.stream().filter(stud -> stud.getId() == studentId).findFirst().orElse(null)).getGroupId();
-//    }
+    public void createNewWork(Work work) {
+        publicationRepository.createNewWork(work);
+    }
+
+    public void createNewAnnouncement(Announcement announcement) {
+        publicationRepository.createNewAnnouncement(announcement);
+    }
+
+    public Publication changeTitle(int id, String title) {
+        return publicationRepository.changeTitle(id, title);
+    }
+
+    public Publication removePublication(int id) {
+        return publicationRepository.removePublication(id);
+    }
+
+    public List<ResponseModel> getPublicationsOfStudent(int studentId) {
+        userRepository.getById(studentId)
+
+
+        return getPublicationsOfGroupSubjects(getSubjectsIds(getGroup(studentId)));
+    }
+
+    public int getGroup(int studentId) {
+        return Objects.requireNonNull(students.stream().filter(stud -> stud.getId() == studentId).findFirst().orElse(null)).getGroupId();
+    }
 //
 //    public ArrayList<Integer> getSubjectsIds(int groupId) {
 //        return Objects.requireNonNull(groups.stream().filter(g -> g.getId() == groupId).findFirst().orElse(null)).getSubjects();

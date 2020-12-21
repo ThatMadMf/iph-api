@@ -10,7 +10,11 @@ import java.util.List;
 @RestController
 @RequestMapping("api/publications")
 public class PublicationController {
-    PublicationService publicationService = new PublicationService();
+    private final PublicationService publicationService;
+
+    PublicationController(PublicationService publicationService) {
+        this.publicationService = publicationService;
+    }
 
     @CrossOrigin
     @GetMapping

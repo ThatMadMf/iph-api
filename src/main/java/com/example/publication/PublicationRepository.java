@@ -9,5 +9,6 @@ public interface PublicationRepository {
     void createNewWork(Work work);
     void createNewAnnouncement(Announcement announcement);
     Publication removePublication(int id);
+    Publication changeTitle(int id, String title);
     List<Publication> getPublicationsOfStudent(int studentId);
 }
