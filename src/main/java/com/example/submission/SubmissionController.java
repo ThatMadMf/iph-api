@@ -1,6 +1,9 @@
 package com.example.submission;
 
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 
@@ -17,6 +20,13 @@ public class SubmissionController {
     @GetMapping("student/{id}")
     public List<Submission> GetByStudentId(@PathVariable int id) {
         return submissionService.getByStudentId(id);
+    }
+
+    @CrossOrigin
+    @PostMapping("test")
+    public ResponseEntity Test(String model, MultipartFile file) {
+        System.out.println(file.getName());
+        return ResponseEntity.ok(HttpStatus.OK);
     }
 
     @CrossOrigin
